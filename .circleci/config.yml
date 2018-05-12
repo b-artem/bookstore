@@ -18,6 +18,7 @@ jobs:
 
       # Setup the environment
       # - run: cp .sample.env .env
+      - run: bundle install
 
       # Setup the database
       - run: bundle exec rake db:setup
