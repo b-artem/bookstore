@@ -29,7 +29,8 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: rails_user
+  # username: rails_user
+  username: postgres
 
   # The password associated with the postgres role (username).
   password: <%= ENV['BOOKSTORE_DATABASE_PASSWORD'] %>
@@ -41,7 +42,8 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
+
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -58,9 +60,11 @@ development:
 test:
   <<: *default
   database: bookstore_test
-  username: rails_user
+  # username: rails_user
+  username: postgres
   password: <%= ENV['BOOKSTORE_DATABASE_PASSWORD'] %>
   host: localhost
+  port: 5432
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
