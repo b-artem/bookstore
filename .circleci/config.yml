@@ -1,7 +1,7 @@
 version: 2
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    parallelism: 4 # run three instances of this job in parallel
+    # parallelism: 2
     working_directory: ~/bookstore
     docker:
       - image: circleci/ruby:2.4.1-node-browsers
@@ -31,7 +31,7 @@ jobs: # a collection of steps
       # - save_cache:
       #     key: bookstore-webkit-v2-{{ checksum "Gemfile.lock" }}
       #     paths:
-      #       - ?????
+      #       - ????????????
 
       # Which version of bundler?
       - run:
@@ -72,17 +72,9 @@ jobs: # a collection of steps
           name: Database setup
           command: bin/rails db:schema:load --trace
 
-      # - run:
-      #     name: Run RSpec
-      #     command: bundle exec rspec
-
-
       - run:
-          name: Run rspec in parallel
-          command: |
-            bundle exec rspec --profile 10 \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          name: Run RSpec
+          command: bundle exec rspec
 
       # - run:
           # name: Run rspec in parallel
