@@ -21,8 +21,7 @@ jobs:
 
       - run:
           name: Install WebKit from QT
-          command: sudo apt-get update && sudo apt-get install \
-                   qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base \
+          command: sudo apt-get update && sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base \
                    gstreamer1.0-tools gstreamer1.0-x
 
       # Which version of bundler?
@@ -69,13 +68,13 @@ jobs:
           command: bundle exec rspec
 
       # - run:
-      #     name: Run rspec in parallel
-      #     command: |
-      #       bundle exec rspec --profile 10 \
-      #                         --format RspecJunitFormatter \
-      #                         --out test_results/rspec.xml \
-      #                         --format progress \
-      #                         $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+          # name: Run rspec in parallel
+          # command: |
+          #   bundle exec rspec --profile 10 \
+          #                     --format RspecJunitFormatter \
+          #                     --out test_results/rspec.xml \
+          #                     --format progress \
+          #                     $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
       # Save test results for timing analysis
       - store_test_results:
