@@ -18,6 +18,13 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
+
+      - run:
+          name: Install WebKit from QT
+          command: sudo apt-get install \
+                   qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base \
+                   gstreamer1.0-tools gstreamer1.0-x
+
       # Which version of bundler?
       - run:
           name: Which bundler?
