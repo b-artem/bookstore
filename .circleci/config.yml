@@ -1,9 +1,10 @@
 version: 2
-jobs:
-  build:
+jobs: # a collection of steps
+  build: # runs not using Workflows must have a `build` job as entry point
+    # parallelism: 3 # run three instances of this job in parallel
     working_directory: ~/bookstore
     docker:
-      - image: circleci/ruby:2.4.1-stretch-node-browsers
+      - image: circleci/ruby:2.4.1-jessie-node-browsers
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
