@@ -27,8 +27,7 @@ jobs: # a collection of steps
       #       - bookstore-webkit-v2-
       - run:
           name: Install WebKit from QT
-          command: |
-            sudo apt-get update && sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+          command: sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
       # - save_cache:
       #     key: bookstore-webkit-v2-{{ checksum "Gemfile.lock" }}
       #     paths:
