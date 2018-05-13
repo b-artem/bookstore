@@ -71,7 +71,7 @@ jobs: # a collection of steps
           command: |
             mkdir -p config && echo 'test:
               username: postgres
-              database: bookstore_test
+              database: bookstore_test_test
               adapter: postgresql
               encoding: unicode
               pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
