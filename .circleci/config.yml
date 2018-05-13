@@ -67,6 +67,18 @@ jobs: # a collection of steps
       #       - ~/.cache/yarn
 
       - run:
+          name: Prepare DB configuration file
+          command: |
+            mkdir -p config && echo 'test:
+              username: bookstore
+              database: bookstore_test
+              adapter: postgresql
+              encoding: unicode
+              pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+              host: localhost
+            ' > config/database.yml
+
+      - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
