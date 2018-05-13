@@ -12,7 +12,7 @@ jobs: # a collection of steps
           PGHOST: localhost
           PGUSER: bookstore
           RAILS_ENV: test
-          RAKE_ENV: test
+          RAKE_ENV: test # if rake is used
       - image: circleci/postgres:9.5
         environment:
           POSTGRES_USER: bookstore
@@ -66,15 +66,16 @@ jobs: # a collection of steps
       #     paths:
       #       - ~/.cache/yarn
 
+      # If databse.yml in .gitignore
       - run:
           name: Prepare DB configuration file
           command: |
             mkdir -p config && echo 'test:
-              username: postgres
-              database: bookstore_test_test
               adapter: postgresql
               encoding: unicode
               pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+              username: bookstore
+              database: bookstore_test
               host: localhost
             ' > config/database.yml
 
